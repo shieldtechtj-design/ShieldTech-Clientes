@@ -62,7 +62,7 @@ body {
   font-size: 14px;
 }
 
-.search-bar select, #filtro {
+#filtro {
   padding: 8px 10px;
   background: #1a1a1a;
   border: 1px solid #2a2a2a;
@@ -111,6 +111,7 @@ body {
   padding: 3px 10px;
   border-radius: 20px;
   text-transform: capitalize;
+  white-space: nowrap;
 }
 
 .badge-pendiente { background: #2a2000; color: #f0a500; }
@@ -125,23 +126,57 @@ body {
 }
 
 .detail { font-size: 12px; color: #aaa; }
+.detail a { color: #aaa; }
 .notas { grid-column: 1 / -1; }
+
+.historial {
+  background: #111;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #222;
+}
+
+.historial-title {
+  font-size: 11px;
+  color: #555;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.historial-item {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: #aaa;
+  padding: 4px 0;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.historial-item:last-child { border-bottom: none; }
+
+.historial-fecha {
+  color: #555;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
 .card-actions {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   padding-top: 10px;
   border-top: 1px solid #2a2a2a;
 }
 
 .card-actions button {
   flex: 1;
-  padding: 6px;
+  padding: 6px 4px;
   background: transparent;
   border: 1px solid #2a2a2a;
   border-radius: 8px;
   color: #aaa;
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
 }
 
@@ -150,7 +185,6 @@ body {
 
 .empty { text-align: center; padding: 3rem; color: #555; font-size: 14px; }
 
-/* FORMULARIO */
 .modal-bg {
   position: fixed;
   inset: 0;
@@ -160,6 +194,7 @@ body {
   justify-content: center;
   padding: 1rem;
   overflow-y: auto;
+  z-index: 100;
 }
 
 .modal {
@@ -170,6 +205,7 @@ body {
   width: 100%;
   max-width: 480px;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 .modal h2 { font-size: 16px; font-weight: 500; margin-bottom: 1.25rem; }
