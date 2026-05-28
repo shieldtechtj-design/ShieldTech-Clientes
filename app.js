@@ -52,7 +52,7 @@ function renderList() {
         ${c.notas ? `<div class="detail notas">📝 ${c.notas}</div>` : ''}
       </div>
       <div class="card-actions">
-        <button onclick="editClient(${c.id})">✏️ Editar</button>
+        <button onclick="editClient(Number(${c.id}))">✏️ Editar</button>
         <button onclick="toggleStatus(${c.id})">🔄 Estatus</button>
         <button onclick="deleteClient(${c.id})" class="del">🗑 Eliminar</button>
       </div>
