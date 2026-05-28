@@ -1,23 +1,26 @@
-<!DOCTYPE html>
+Ahora abre tu index.html en GitHub, borra todo y pega esto completo:
+html<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clientes — Cámaras Tijuana</title>
+  <title>ShielTech — Clientes</title>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app">
     <div class="header">
-      <h1>Mis clientes</h1>
+      <h1>🛡 ShielTech</h1>
       <button class="btn-new" onclick="showForm()">+ Nuevo cliente</button>
     </div>
+
     <div class="stats">
       <div class="stat"><div class="label">Total</div><div class="val" id="stat-total">0</div></div>
       <div class="stat"><div class="label">Instalados</div><div class="val" id="stat-inst">0</div></div>
       <div class="stat"><div class="label">Pendientes</div><div class="val" id="stat-pend">0</div></div>
     </div>
+
     <div class="search-bar">
       <input type="text" id="search" placeholder="Buscar nombre, dirección, teléfono..." oninput="renderList()">
       <select id="filtro" onchange="renderList()">
@@ -27,6 +30,7 @@
         <option value="garantia">Garantía</option>
       </select>
     </div>
+
     <div id="client-list"></div>
   </div>
 
@@ -34,15 +38,19 @@
     <div class="modal-bg">
       <div class="modal">
         <h2 id="form-title">Nuevo cliente</h2>
+
         <div class="form-row">
-          <div class="form-group"><label>Nombre</label><input id="f-nombre" type="text"></div>
-          <div class="form-group"><label>Teléfono</label><input id="f-telefono" type="tel"></div>
+          <div class="form-group"><label>Nombre</label><input id="f-nombre" type="text" placeholder="Juan Pérez"></div>
+          <div class="form-group"><label>Teléfono</label><input id="f-telefono" type="tel" placeholder="664 000 0000"></div>
         </div>
-        <div class="form-group"><label>Dirección</label><input id="f-direccion" type="text"></div>
+
+        <div class="form-group"><label>Dirección / Link Maps</label><input id="f-direccion" type="text" placeholder="Pega el link de Google Maps"></div>
+
         <div class="form-row">
           <div class="form-group"><label>Fecha instalación</label><input id="f-fecha" type="date"></div>
-          <div class="form-group"><label>Monto ($)</label><input id="f-monto" type="number"></div>
+          <div class="form-group"><label>Monto ($)</label><input id="f-monto" type="number" placeholder="2500"></div>
         </div>
+
         <div class="form-row">
           <div class="form-group"><label>Tipo de cámara</label>
             <select id="f-camara">
@@ -60,7 +68,36 @@
             </select>
           </div>
         </div>
-        <div class="form-group"><label>Notas</label><textarea id="f-notas"></textarea></div>
+
+        <div class="form-row">
+          <div class="form-group"><label>Origen del lead</label>
+            <select id="f-origen">
+              <option value="">Seleccionar</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Referido">Referido</option>
+              <option value="Orgánico">Orgánico</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Etapa</label>
+            <select id="f-etapa">
+              <option value="nuevo lead">Nuevo lead</option>
+              <option value="cotizado">Cotizado</option>
+              <option value="confirmado">Confirmado</option>
+              <option value="instalado">Instalado</option>
+              <option value="garantia">Garantía</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group"><label>Próximo contacto</label><input id="f-proximo" type="date"></div>
+          <div class="form-group"><label>Tarea pendiente</label><input id="f-tarea" type="text" placeholder="Ej. Mandar cotización"></div>
+        </div>
+
+        <div class="form-group"><label>Notas</label><textarea id="f-notas" placeholder="Observaciones, detalles del lugar..."></textarea></div>
+
         <div class="modal-actions">
           <button class="btn-cancel" onclick="hideForm()">Cancelar</button>
           <button class="btn-save" onclick="saveClient()">Guardar</button>
