@@ -45,7 +45,7 @@ function renderList() {
         <span class="badge badge-${c.estatus}">${c.estatus}</span>
       </div>
       <div class="card-details">
-        <div class="detail">📍 ${c.direccion || '—'}</div>
+        <div class="detail">📍 ${c.direccion ? `<a href="${c.direccion}" target="_blank" style="color:#aaa">Ver en Maps</a>` : '—'}</div>
         <div class="detail">📅 ${fmtFecha(c.fecha)}</div>
         <div class="detail">📷 ${c.camara || '—'}</div>
         <div class="detail">💵 $${Number(c.monto||0).toLocaleString()}</div>
