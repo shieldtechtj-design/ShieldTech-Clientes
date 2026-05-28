@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes — Cámaras Tijuana</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <div class="header">
+      <h1>Mis clientes</h1>
+      <button class="btn-new" onclick="showForm()">+ Nuevo cliente</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="label">Total</div><div class="val" id="stat-total">0</div></div>
+      <div class="stat"><div class="label">Instalados</div><div class="val" id="stat-inst">0</div></div>
+      <div class="stat"><div class="label">Pendientes</div><div class="val" id="stat-pend">0</div></div>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="Buscar nombre, dirección, teléfono..." oninput="renderList()">
+      <select id="filtro" onchange="renderList()">
+        <option value="">Todos</option>
+        <option value="pendiente">Pendiente</option>
+        <option value="instalado">Instalado</option>
+        <option value="garantia">Garantía</option>
+      </select>
+    </div>
+    <div id="client-list"></div>
+  </div>
+
+  <div id="form-view" style="display:none">
+    <div class="modal-bg">
+      <div class="modal">
+        <h2 id="form-title">Nuevo cliente</h2>
+        <div class="form-row">
+          <div class="form-group"><label>Nombre</label><input id="f-nombre" type="text"></div>
+          <div class="form-group"><label>Teléfono</label><input id="f-telefono" type="tel"></div>
+        </div>
+        <div class="form-group"><label>Dirección</label><input id="f-direccion" type="text"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Fecha instalación</label><input id="f-fecha" type="date"></div>
+          <div class="form-group"><label>Monto ($)</label><input id="f-monto" type="number"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Tipo de cámara</label>
+            <select id="f-camara">
+              <option value="">Seleccionar</option>
+              <option>Solar con internet</option>
+              <option>Solar sin internet</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Estatus</label>
+            <select id="f-estatus">
+              <option value="pendiente">Pendiente</option>
+              <option value="instalado">Instalado</option>
+              <option value="garantia">Garantía</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Notas</label><textarea id="f-notas"></textarea></div>
+        <div class="modal-actions">
+          <button class="btn-cancel" onclick="hideForm()">Cancelar</button>
+          <button class="btn-save" onclick="saveClient()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
