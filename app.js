@@ -59,7 +59,22 @@ function renderList() {
     </div>
   `).join('')
 }
-
+function editClient(id) {
+  const client = clients.find(x => Number(x.id) === Number(id))
+  if (!client) return
+  editingId = Number(id)
+  document.getElementById('form-title').textContent = 'Editar cliente'
+  document.getElementById('f-nombre').value = client.nombre
+  document.getElementById('f-telefono').value = client.telefono || ''
+  document.getElementById('f-direccion').value = client.direccion || ''
+  document.getElementById('f-fecha').value = client.fecha || ''
+  document.getElementById('f-monto').value = client.monto || ''
+  document.getElementById('f-camara').value = client.camara || ''
+  document.getElementById('f-estatus').value = client.estatus
+  document.getElementById('f-notas').value = client.notas || ''
+  document.querySelector('.app').style.display = 'none'
+  document.getElementById('form-view').style.display = 'block'
+}
 function showForm(id) {
   editingId = id || null
   document.getElementById('form-title').textContent = id ? 'Editar cliente' : 'Nuevo cliente'
@@ -101,7 +116,7 @@ async function saveClient() {
     notas: document.getElementById('f-notas').value.trim(),
   }
   if (editingId) {
-    await sb.from('clientes').update(data).eq('id', editingId)
+    await sb.from('clientes').update(data).eq('id', Number(editingId))
   } else {
     await sb.from('clientes').insert(data)
   }
